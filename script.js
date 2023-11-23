@@ -11,20 +11,26 @@ let score2 = 0;
 function addScore(player) {
     const maxScore = parseInt(selectElement.value);
 
+    console.log(maxScore);
+
     if (player === 1) {
         score1 += 1;
         p1Display.innerText = score1;
 
-        if (score1 === maxScore) {
+        if (score1 >= maxScore) {
             message.innerText = "Player 1 vencedor";
+            p1Display.classList.add("green");
+            p2Display.classList.add("red");
             disableButtons()
         }
     } else if (player === 2) {
         score2 += 1;
         p2Display.innerText = score2;
 
-        if (score2 === maxScore) {
+        if (score2 >= maxScore) {
             message.innerText = "Player 2 vencedor";
+            p2Display.classList.add("green");
+            p1Display.classList.add("red");
             disableButtons()
         }
     }
@@ -38,6 +44,10 @@ function reset() {
     p2Display.innerText = score2;
     p1Button.disabled = false;
     p2Button.disabled = false;
+    p1Display.classList.remove("green");
+    p1Display.classList.remove("red");
+    p2Display.classList.remove("green");
+    p2Display.classList.remove("red");
 }
 
 function disableButtons(){
