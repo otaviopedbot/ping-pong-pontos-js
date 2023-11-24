@@ -7,18 +7,23 @@ const message = document.getElementById('message');
 
 let score1 = 0;
 let score2 = 0;
+let currentMaxScore = 0;
 
 function addScore(player) {
+
     const maxScore = parseInt(selectElement.value);
 
-    console.log(maxScore);
+    if (maxScore !== currentMaxScore) {
+        reset();
+        currentMaxScore = maxScore;
+    }
 
     if (player === 1) {
         score1 += 1;
         p1Display.innerText = score1;
 
-        if (score1 >= maxScore) {
-            message.innerText = "Player 1 vencedor";
+        if (score1 == maxScore) {
+            message.innerText = "Player 1 vencedor!";
             p1Display.classList.add("green");
             p2Display.classList.add("red");
             disableButtons()
@@ -27,8 +32,8 @@ function addScore(player) {
         score2 += 1;
         p2Display.innerText = score2;
 
-        if (score2 >= maxScore) {
-            message.innerText = "Player 2 vencedor";
+        if (score2 == maxScore) {
+            message.innerText = "Player 2 vencedor!";
             p2Display.classList.add("green");
             p1Display.classList.add("red");
             disableButtons()
@@ -50,7 +55,7 @@ function reset() {
     p2Display.classList.remove("red");
 }
 
-function disableButtons(){
+function disableButtons() {
     p1Button.disabled = true;
     p2Button.disabled = true;
 }
