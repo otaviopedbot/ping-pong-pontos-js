@@ -9,34 +9,36 @@ let score1 = 0;
 let score2 = 0;
 let currentMaxScore = 0;
 
+
+selectElement.addEventListener('change', function () {
+    reset();
+    currentMaxScore = parseInt(selectElement.value);
+});
+
+
 function addScore(player) {
 
     const maxScore = parseInt(selectElement.value);
-
-    if (maxScore !== currentMaxScore) {
-        reset();
-        currentMaxScore = maxScore;
-    }
 
     if (player === 1) {
         score1 += 1;
         p1Display.innerText = score1;
 
         if (score1 == maxScore) {
-            message.innerText = "Player 1 vencedor!";
+            message.innerText = "Player 1 vencedor";
             p1Display.classList.add("green");
             p2Display.classList.add("red");
-            disableButtons()
+            disableButtons();
         }
     } else if (player === 2) {
         score2 += 1;
         p2Display.innerText = score2;
 
         if (score2 == maxScore) {
-            message.innerText = "Player 2 vencedor!";
+            message.innerText = "Player 2 vencedor";
             p2Display.classList.add("green");
             p1Display.classList.add("red");
-            disableButtons()
+            disableButtons();
         }
     }
 }
